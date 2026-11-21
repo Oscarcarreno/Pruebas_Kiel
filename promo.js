@@ -46,6 +46,8 @@
   if (!grupo) return;
   const esInicio = !!document.querySelector('.hero');
   const seguro = u => typeof u === 'string' && (/^(https:\/\/|http:\/\/(localhost|127\.0\.0\.1)(:\d+)?\/|images\/|\.\/|\/(?!\/))/.test(u) || /^[\w-]+\.html(\?.*)?(#.*)?$/.test(u) || /^tel:\+?[\d-]+$/.test(u));
+  const ruta = u => (typeof u === 'string' && /^\/(?!\/)/.test(u) ? u.replace(/^\/+/, '') : u);   // "/images/x.jpg" -> "images/x.jpg"
+  const aviso = (t, u) => { try { console.warn('[promoción] ' + t + ':', u); } catch (_) {} };
   const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; };
 
   async function leer(url) {
@@ -100,19 +102,19 @@
 
   function medio(m) {
     if (!m) return null;
-    const fig = el('figure', 'promo-media');
+    const fig = el('figure', 'promo-media'), src = ruta(m.src), poster = ruta(m.poster);
     if (m.tipo === 'youtube' && /^[\w-]{11}$/.test(m.id || '')) {
       const b = el('button', 'promo-play'); b.type = 'button'; b.setAttribute('aria-label', 'Reproducir video');
-      if (seguro(m.poster)) b.style.backgroundImage = 'url("' + m.poster + '")';
+      if (seguro(poster)) b.style.backgroundImage = 'url("' + poster + '")';
       b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>';
       b.addEventListener('click', () => { const f = document.createElement('iframe'); f.src = 'https://www.youtube-nocookie.com/embed/' + m.id + '?autoplay=1&rel=0'; f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true; f.title = 'Video de la promoción'; b.replaceWith(f); });
       fig.appendChild(b);
-    } else if (m.tipo === 'video' && seguro(m.src)) {
-      const v = document.createElement('video'); v.controls = true; v.playsInline = true; v.preload = 'metadata'; v.src = m.src; if (seguro(m.poster)) v.poster = m.poster;
-      v.addEventListener('error', () => { fig.hidden = true; }); fig.appendChild(v);
-    } else if (seguro(m.src)) {
-      const i = el('img'); i.src = m.src; i.alt = m.alt || ''; i.decoding = 'async'; i.addEventListener('error', () => { fig.hidden = true; }); fig.appendChild(i);
-    } else return null;
+    } else if (m.tipo === 'video' && seguro(src)) {
+      const v = document.createElement('video'); v.controls = true; v.playsInline = true; v.preload = 'metadata'; v.src = src; if (seguro(poster)) v.poster = poster;
+      v.addEventListener('error', () => { aviso('no se pudo cargar el video', src); fig.hidden = true; }); fig.appendChild(v);
+    } else if (seguro(src)) {
+      const i = el('img'); i.src = src; i.alt = m.alt || ''; i.decoding = 'async'; i.addEventListener('error', () => { aviso('no se encontró la imagen (revisa el nombre y que ya se haya publicado)', i.src); fig.hidden = true; }); fig.appendChild(i);
+    } else { aviso('la ruta del archivo no es válida', m.src); return null; }
     return fig;
   }
 
