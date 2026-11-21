@@ -1,0 +1,95 @@
+# Configuración del editor Pages CMS (https://pagescms.org): muestra un formulario para editar promocion.json
+# y subir imágenes/videos a images/promociones, sin que el cliente tenga que tocar código.
+
+media:
+  input: images/promociones
+  output: /images/promociones
+  rename: safe
+  categories: [image, video]
+
+components:
+  promocion:
+    type: object
+    fields:
+      - name: texto_corto
+        label: Texto corto del botón
+        type: string
+        description: "Lo que se ve en el botón pequeño al cargar el inicio. Máximo 90 caracteres. Ejemplo: ¡Promoción de noviembre! Aprovecha…"
+        options:
+          maxlength: 90
+      - name: titulo
+        label: Título
+        type: string
+        description: "Título de la tarjeta de la promoción. Si lo dejas vacío, este espacio no se muestra."
+        options:
+          maxlength: 120
+      - name: contenido
+        label: Contenido
+        type: text
+        description: "Deja una línea en blanco entre párrafos. Para hacer una lista, empieza cada línea con un guion y un espacio (- )."
+      - name: medio_tipo
+        label: ¿Qué quieres mostrar?
+        type: select
+        default: ninguno
+        options:
+          values:
+            - name: ninguno
+              label: Solo texto
+            - name: imagen
+              label: Una imagen
+            - name: video
+              label: Un video (archivo MP4 o WebM)
+            - name: youtube
+              label: Un video de YouTube
+      - name: imagen
+        label: Imagen
+        type: image
+        description: "Se usa si elegiste «Una imagen». Mejor en horizontal, de unos 1200 px de ancho."
+      - name: video
+        label: Video (archivo)
+        type: file
+        description: "Se usa si elegiste «Un video». Que pese menos de 20 MB; si es más grande, súbelo a YouTube."
+      - name: youtube
+        label: Enlace de YouTube
+        type: string
+        description: "Se usa si elegiste «Un video de YouTube». Pega el enlace completo."
+      - name: pie
+        label: Texto de pie
+        type: text
+        description: "Vigencia, condiciones o aclaraciones (aparece al final de la tarjeta)."
+      - name: boton_etiqueta
+        label: Botón (texto, opcional)
+        type: string
+        description: "Ejemplo: Pedir cotización"
+        options:
+          maxlength: 40
+      - name: boton_destino
+        label: Botón (a dónde lleva)
+        type: string
+        description: "Una página del sitio (contacto.html), un enlace que empiece con https:// o un teléfono (tel:+528183645910)."
+      - name: desde
+        label: Se publica el día
+        type: date
+        default: ""
+        options:
+          format: yyyy-MM-dd
+      - name: hasta
+        label: Se quita después del día
+        type: date
+        default: ""
+        options:
+          format: yyyy-MM-dd
+
+content:
+  - name: promocion
+    label: Promociones del sitio
+    type: file
+    path: promocion.json
+    format: json
+    fields:
+      - name: actual
+        label: "1 · Promoción publicada (la que se ve ahora)"
+        component: promocion
+      - name: siguiente
+        label: "2 · Promoción siguiente (programada)"
+        component: promocion

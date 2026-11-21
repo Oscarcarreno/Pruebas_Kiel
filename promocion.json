@@ -1,0 +1,30 @@
+{
+  "actual": {
+    "texto_corto": "¡Promoción de noviembre! Aprovecha el remate de pernos.",
+    "titulo": "¡Promoción de noviembre!",
+    "contenido": "Aprovecha nuestro gran remate de perno para bisagra.\n\n- Perno para bisagra 0.175″ × 2.950″\n- Con cuello de 0.210″ × 1/4″\n\nLlámanos al 81 8364 5910 o al 81 8364 5969.",
+    "medio_tipo": "imagen",
+    "imagen": "/images/promociones/promocion.jpg",
+    "video": "",
+    "youtube": "",
+    "pie": "EJEMPLO: cambia este texto, la imagen y las fechas desde el editor. Consulta condiciones y vigencia con nuestros asesores.",
+    "boton_etiqueta": "Pedir cotización",
+    "boton_destino": "contacto.html",
+    "desde": "2026-11-01",
+    "hasta": "2026-11-30"
+  },
+  "siguiente": {
+    "texto_corto": "",
+    "titulo": "",
+    "contenido": "",
+    "medio_tipo": "ninguno",
+    "imagen": "",
+    "video": "",
+    "youtube": "",
+    "pie": "",
+    "boton_etiqueta": "",
+    "boton_destino": "",
+    "desde": "",
+    "hasta": ""
+  }
+}

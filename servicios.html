@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <script>try { if (sessionStorage.getItem("pt")) { document.documentElement.classList.add("pt-in"); sessionStorage.removeItem("pt") } } catch (e) { }</script>
+  <script>if (/[?&]servicio=/.test(location.search)) document.documentElement.classList.add("has-svc")</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Remache semi-tubular, pernos para cortina de acero, tornillos carroceros y ferreteros, industria nacional, industria eléctrica y pernos para bisagras. Cotizamos sobre dibujo o muestra." />
+  <title>Servicios | Compañía Industrial KIEL</title>
+  <link rel="canonical" href="https://www.kieltornillos.com/servicios.html" />
+  <link rel="icon" href="images/Kiel icon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="images/Kiel icon.png" />
+  <meta name="theme-color" content="#111214" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Compañía Industrial KIEL" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:title" content="Servicios | Compañía Industrial KIEL" />
+  <meta property="og:description"
+    content="Remache semi-tubular, pernos para cortina de acero, tornillos carroceros y ferreteros, industria nacional, industria eléctrica y pernos para bisagras. Cotizamos sobre dibujo o muestra." />
+  <meta property="og:url" content="https://www.kieltornillos.com/servicios.html" />
+  <meta property="og:image" content="https://www.kieltornillos.com/images/hero_bolts.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700&display=swap" />
+  </noscript>
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Animated number counter for catalog category cards */
+    .cat-card {
+      position: relative;
+      padding: 2rem;
+      border-radius: 16px;
+      background: var(--white);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s var(--ease-out-expo);
+      border: 1px solid rgba(56, 56, 56, 0.07);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px rgba(56, 56, 56, 0.12);
+    }
+
+    .cat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--brand);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.4s var(--ease-out-expo);
+    }
+
+    .cat-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .cat-card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: var(--brand-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--brand);
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .cat-card:hover .cat-card-icon {
+      background: var(--brand);
+      color: var(--white);
+    }
+
+    .cat-card-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .cat-card-body {
+      flex: 1;
+    }
+
+    .cat-card-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--brand);
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .cat-card-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .cat-card-desc {
+      font-size: 0.85rem;
+      color: var(--dark-60);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .cat-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    /* Product grid items */
+    .prod-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 600px) {
+      .prod-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .prod-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .prod-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Category filters */
+    .cat-filter-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 4rem;
+    }
+
+    @media (min-width: 600px) {
+      .cat-filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .cat-filter-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Active category highlight */
+    .active-category {
+      border-color: var(--brand) !important;
+    }
+
+    /* Search bar */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--white);
+      border-radius: 100px;
+      padding: 0.7rem 1.5rem;
+      box-shadow: 0 4px 20px rgba(56, 56, 56, 0.08);
+      border: 2px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      max-width: 500px;
+    }
+
+    .search-bar:focus-within {
+      border-color: var(--brand);
+      box-shadow: 0 4px 20px rgba(3, 137, 236, 0.1);
+    }
+
+    .search-bar svg {
+      width: 18px;
+      height: 18px;
+      color: var(--dark-60);
+      flex-shrink: 0;
+    }
+
+    .search-bar input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--dark);
+      background: transparent;
+    }
+
+    .search-bar input::placeholder {
+      color: var(--dark-60);
+      opacity: 0.6;
+    }
+  </style>
+  <link rel="stylesheet" href="theme.css" />
+  <script src="servicios-data.js" defer></script>
+  <script src="servicios.js" defer></script>
+  <script src="promo.js" defer></script>
+</head>
+
+<body>
+
+  <div class="page-transition-overlay" id="pageOverlay"></div>
+
+  <!-- ============================================================
+     BOTONES FLOTANTES: WhatsApp y teléfono. promo.js agrega arriba el botón
+     de promoción cuando hay una promoción vigente.
+     ============================================================ -->
+  <div class="float-contact-btns" aria-label="Contacto rápido">
+    <a href="https://wa.me/5218180105917?text=Hola%2C%20he%20visto%20su%20sitio%20y%20quisiera%20solicitar%20informaci%C3%B3n."
+      class="float-btn float-btn--whatsapp" target="_blank" rel="noopener noreferrer"
+      aria-label="Contáctanos por WhatsApp" data-tooltip="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+    </a>
+    <a href="tel:+528183645910" class="float-btn float-btn--phone" aria-label="Llamar al 81 8364 5910"
+      data-tooltip="Llamar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path
+          d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.63 19.79 19.79 0 01.22 1.2 2 2 0 012.2 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+      </svg>
+    </a>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img class="logo-img" id="nav-logo-img" src="images/Kiel logo.png" alt="Compañía Industrial KIEL" width="240"
+          height="32" />
+      </a>
+      <div class="nav-links">
+        <a href="index.html" data-page="home">Inicio</a>
+        <a href="servicios.html" class="active" data-page="servicios">Servicios</a>
+        <a href="nosotros.html" data-page="nosotros">Nosotros</a>
+        <a href="contacto.html" data-page="contacto">Contacto</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Inicio</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+
+  <!-- SERVICIOS -->
+  <section class="catalog-section section-pad" id="servicios">
+    <div class="container">
+      <!-- Vista 1: tarjetas (cada tarjeta abre la sección de ese servicio) -->
+      <div id="svcList">
+        <div class="section-title-block" style="margin-bottom:2.5rem;">
+          <div class="section-label reveal">Servicios</div>
+          <h1 class="display-md reveal reveal-delay-1">Fabricamos para <span class="text-brand">cada industria</span>
+          </h1>
+          <p class="body-lg reveal reveal-delay-2" style="margin-top:1rem;">Selecciona un servicio para conocer lo que
+            fabricamos.</p>
+        </div>
+        <div class="grid-4" id="svcCards">
+          <a href="servicios.html?servicio=remache-semi-tubular" id="card-remache-semi-tubular"
+            data-card="remache-semi-tubular" class="product-card reveal" style="animation-delay:0.1s">
+            <div class="product-card-img">
+              <img src="images/Product_Remache.png" alt="Remache Semi-Tubular" loading="lazy" decoding="async"
+                onerror="this.style.display='none'" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Remaches</div>
+              <h3 class="product-card-name">Remache Semi-Tubular</h3>
+              <p class="product-card-desc">Fabricación de remache semi-tubular en Monterrey.</p>
+            </div>
+          </a>
+          <a href="servicios.html?servicio=cortinas-de-acero" id="card-cortinas-de-acero" data-card="cortinas-de-acero"
+            class="product-card reveal" style="animation-delay:0.2s">
+            <div class="product-card-img">
+              <img src="images/Product_Cortinas.png" alt="Cortinas de Acero" loading="lazy" decoding="async"
+                onerror="this.style.display='none'" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Pernos</div>
+              <h3 class="product-card-name">Cortinas de Acero</h3>
+              <p class="product-card-desc">Fabricación y venta de pernos para cortina de acero.</p>
+            </div>
+          </a>
+          <a href="servicios.html?servicio=carroceros" id="card-carroceros" data-card="carroceros"
+            class="product-card reveal" style="animation-delay:0.3s">
+            <div class="product-card-img">
+              <img src="images/Product_Carroceros.png" alt="Carroceros" loading="lazy" decoding="async"
+                onerror="this.style.display='none'" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Tornillos</div>
+              <h3 class="product-card-name">Carroceros</h3>
+              <p class="product-card-desc">Fabricación de tornillos carroceros.</p>
+            </div>
+          </a>
+          <a href="servicios.html?servicio=ferreteros" id="card-ferreteros" data-card="ferreteros"
+            class="product-card reveal" style="animation-delay:0.4s">
+            <div class="product-card-img">
+              <img src="images/Product_Ferreteros.png" alt="Ferreteros" loading="lazy" decoding="async"
+                onerror="this.style.display='none'" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Distribuidores</div>
+              <h3 class="product-card-name">Ferreteros</h3>
+              <p class="product-card-desc">Amplia gama de tornillos ferreteros para distribuidores.</p>
+            </div>
+          </a>
+          <a href="servicios.html?servicio=industria-nacional" id="card-industria-nacional"
+            data-card="industria-nacional" class="product-card reveal" style="animation-delay:0.1s">
+            <div class="product-card-img">
+              <img src="images/Product_Nacional.png" alt="Industria Nacional" loading="lazy" decoding="async"
+                onerror="this.style.display='none'" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Todas las industrias</div>
+              <h3 class="product-card-name">Industria Nacional</h3>
+              <p class="product-card-desc">Tornillos y pernos para toda la industria nacional, de 1/8″ a 3/8″.</p>
+            </div>
+          </a>
+          <a href="servicios.html?servicio=industria-electrica" id="card-industria-electrica"
+            data-card="industria-electrica" class="product-card reveal" style="animation-delay:0.2s">
+            <div class="product-card-img">
+              <img src="images/Product_Electrica.png" alt="Industria Eléctrica" loading="lazy" decoding="async"
+                onerror="this.style.display='none'" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Sujeciones</div>
+              <h3 class="product-card-name">Industria Eléctrica</h3>
+              <p class="product-card-desc">Tornillería y sujeciones para la industria eléctrica.</p>
+            </div>
+          </a>
+          <a href="servicios.html?servicio=pernos-para-bisagras" id="card-pernos-para-bisagras"
+            data-card="pernos-para-bisagras" class="product-card reveal" style="animation-delay:0.3s">
+            <div class="product-card-img">
+              <img src="images/Product_Bisagras.png" alt="Pernos para Bisagras" loading="lazy" decoding="async"
+                onerror="this.style.display='none'" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Pernos</div>
+              <h3 class="product-card-name">Pernos para Bisagras</h3>
+              <p class="product-card-desc">Fabricación de pernos para fabricantes de bisagras.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Vista 2: sección del servicio elegido (se arma con los bloques de servicios-data.js) -->
+      <article id="svcDetail" hidden>
+        <div class="items-head" id="svcHead">
+          <button type="button" class="btn btn-outline btn-lg" id="svcBack">Todos los servicios</button>
+          <h1 class="items-title" id="svcTitle" tabindex="-1"></h1>
+        </div>
+        <div class="svc-body" id="svcBody"></div>
+        <div class="svc-pager" id="svcPager"></div>
+      </article>
+
+      <div class="catalog-cta-banner reveal" style="margin-top: 4rem;">
+        <!-- Video de fondo -->
+        <video class="catalog-cta-bg-video" autoplay muted loop playsinline>
+          <source src="images/bolt change.mp4" type="video/mp4">
+        </video>
+        <!-- Overlay -->
+        <div class="catalog-cta-overlay"></div>
+        <!-- Contenido -->
+        <div class="catalog-cta-content">
+          <h3>¿Proyecto especial?</h3>
+          <p>Cotizamos sobre dibujo o muestra. Si no lo fabricamos, lo desarrollamos.</p>
+          <a href="contacto.html" class="btn btn-outline btn-lg" id="cat-cta-contacto">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Solicitar cotización
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <img class="logo-img logo-img-footer" id="footer-logo-img" src="images/Kiel logo white.png"
+              alt="Compañía Industrial KIEL" width="260" height="40" />
+          </div>
+          <p class="footer-tagline">Fabricantes de tornillos especiales, remaches, pernos y sujeciones en general, en
+            Monterrey.</p>
+          <div class="footer-social">
+            <a href="tel:+528183645910" aria-label="Teléfono"><svg fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24">
+                <path
+                  d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.63 19.79 19.79 0 01.22 1.2 2 2 0 012.2 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+              </svg></a>
+            <a href="mailto:tornillosespeciales@kieltornillos.com" aria-label="Correo"><svg fill="none"
+                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Navegación</h5>
+          <div class="footer-links">
+            <a href="index.html">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Servicios</h5>
+          <div class="footer-links">
+            <a href="servicios.html?servicio=remache-semi-tubular">Remache Semi-Tubular</a>
+            <a href="servicios.html?servicio=cortinas-de-acero">Cortinas de Acero</a>
+            <a href="servicios.html?servicio=carroceros">Carroceros</a>
+            <a href="servicios.html?servicio=ferreteros">Ferreteros</a>
+            <a href="servicios.html?servicio=industria-nacional">Industria Nacional</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <div class="footer-contact-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg><span>Puerto de Guaymas 513, Col. La Fe, C.P. 66477, San Nicolás de los Garza, N.L.</span></div>
+          <div class="footer-contact-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.63 19.79 19.79 0 01.22 1.2 2 2 0 012.2 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+            </svg><span>81 8364 5910 · 81 8364 5969</span></div>
+          <div class="footer-contact-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg><span>tornillosespeciales@kieltornillos.com</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Compañía Industrial KIEL. Todos los derechos reservados.</p>
+        <div class="footer-legal">
+          <a href="aviso-privacidad.html">Aviso de Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Visor de imagen de producto -->
+  <div class="imgv" id="imgViewer" role="dialog" aria-modal="true" aria-label="Imagen del producto" hidden>
+    <button type="button" class="imgv-close" id="imgvClose" aria-label="Cerrar imagen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+        aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </button>
+    <div class="imgv-stage" id="imgvStage">
+      <img class="imgv-img" id="imgvImg" alt="" draggable="false" hidden />
+      <p class="imgv-msg" id="imgvMsg">Cargando…</p>
+    </div>
+    <div class="imgv-zoom" role="group" aria-label="Zoom">
+      <button type="button" id="imgvOut" aria-label="Alejar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+          aria-hidden="true">
+          <path d="M5 12h14" />
+        </svg>
+      </button>
+      <button type="button" id="imgvIn" aria-label="Acercar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+          aria-hidden="true">
+          <path d="M5 12h14M12 5v14" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ─── Nav & Mobile ────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+      document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ─── Scroll reveal ────────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ─── Cortina roja entre páginas (ligera) ────────────────
+    (function () {
+      const overlay = document.getElementById('pageOverlay');
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const here = location.pathname.split('/').pop() || 'index.html';
+      const targets = new Set();
+      document.querySelectorAll('a[href]').forEach(a => {
+        const h = a.getAttribute('href');
+        if (!h || h[0] === '#' || /^(https?:|mailto:|tel:)/.test(h) || a.target === '_blank') return;
+        targets.add(h.split('#')[0].split('?')[0]);
+        a.addEventListener('click', e => {
+          if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || reduce || !overlay) return;
+          e.preventDefault();
+          try { sessionStorage.setItem('pt', '1'); } catch (_) { }
+          overlay.classList.add('enter');
+          setTimeout(() => { location.href = h; }, 300);
+        });
+      });
+      // Al volver con el botón "atrás" la cortina no debe quedar cubriendo la página
+      window.addEventListener('pageshow', e => { if (e.persisted && overlay) overlay.classList.remove('enter'); });
+      // Precarga las demás páginas cuando el navegador está libre: bajo la cortina ya están listas
+      const idle = window.requestIdleCallback ? f => requestIdleCallback(f, { timeout: 2000 }) : f => setTimeout(f, 1200);
+      idle(() => targets.forEach(t => {
+        if (!t || t === here) return;
+        const l = document.createElement('link'); l.rel = 'prefetch'; l.href = t; document.head.appendChild(l);
+      }));
+    })();
+  </script>
+</body>
+
+</html>
