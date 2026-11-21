@@ -1837,7 +1837,7 @@ a.product-card {
 .float-btn--promo {
   border: 0;
   cursor: pointer;
-  background: var(--brand);
+  background: rgb(255, 255, 255);
   color: var(--dark);
   transition: width .35s ease, border-radius .35s ease, padding .35s ease
 }
@@ -1936,7 +1936,7 @@ a.product-card {
 
 .promo-close:hover,
 .promo-close:focus-visible {
-  background: var(--brand);
+  background: rgb(255, 255, 255);
   outline: 0
 }
 
